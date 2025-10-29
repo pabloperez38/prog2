@@ -56,13 +56,16 @@
 
                     <?php
                     if (isset($_GET["pagina"])) {
-                        $pagina = $_GET["pagina"];
+
+                        $pagina = explode("/", $_GET["pagina"]);
+                       // print_r($pagina[0]);
                         if (
-                        $pagina == "productos" ||
-                        $pagina == "inicio" ||
-                        $pagina == "categorias") 
+                        $pagina[0] == "productos" ||
+                        $pagina[0] == "inicio" ||
+                        $pagina[0] == "agregar" ||
+                        $pagina[0] == "categorias") 
                         {
-                            include "vistas/modulos/" . $pagina . ".php";
+                            include "vistas/modulos/" . $pagina[0] . ".php";
                         } else {
                             include "vistas/modulos/error404.php";
                         }

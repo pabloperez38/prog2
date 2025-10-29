@@ -5,4 +5,8 @@ class Plantilla
     {
         include 'vistas/plantilla.php';
     }
+
+    static public function url(){
+        return 'http://localhost/final2025/';
+    }
 }

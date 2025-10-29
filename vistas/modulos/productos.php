@@ -2,7 +2,10 @@
       <div class="card">
           <div class="card-header">
               <h5 class="card-title mb-0">Productos</h5>
+               <a class="btn btn-success" href="agregar">Agregar</a>
           </div><!-- end card header -->
+
+         
 
           <div class="card-body">
               <div class="table-responsive">
@@ -11,6 +14,7 @@
                           <tr>
                               <th scope="col">#</th>
                               <th scope="col">Nombre</th>
+                              <th scope="col">Categoria</th>
                               <th scope="col">Precio</th>
                               <th scope="col">Estado</th>
                               <th scope="col">Acciones</th>
@@ -26,8 +30,10 @@
                             ?>
 
                               <tr>
-                                  <th><?php echo $producto["id_producto"] ?></th>
+                                  <td><?php echo $producto["id_producto"] ?></td>
+                                  
                                   <td><?php echo $producto["nombre"] ?></td>
+                                    <td><?php echo $producto["nombre_categoria"] ?></td>
                                   <td>$ <?php echo number_format($producto["precio"], 2) ?></td>
                                   <td><?php if ($producto["estado"] == 1) {
                                             echo '<span class="badge text-bg-success">Activo</span>';
