@@ -1,3 +1,6 @@
+<?php
+session_start();
+$url = Plantilla::url(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +14,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="vistas/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo $url; ?>vistas/assets/images/favicon.ico">
 
     <!-- App css -->
-    <link href="vistas/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="<?php echo $url; ?>vistas/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
 
     <!-- Icons -->
-    <link href="vistas/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $url; ?>vistas/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+       <script src="<?php echo $url; ?>vistas/assets/js/scripts.js"></script>
 
 </head>
 
@@ -43,15 +52,9 @@
 
                     <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
                         <div class="flex-grow-1">
-                            <h4 class="fs-18 fw-semibold m-0">Starter</h4>
+                            <h4 class="fs-18 fw-semibold m-0">Sistema de administración web</h4>
                         </div>
-
-                        <div class="text-end">
-                            <ol class="breadcrumb m-0 py-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                                <li class="breadcrumb-item active">Starter</li>
-                            </ol>
-                        </div>
+                       
                     </div>
 
                     <?php
@@ -61,6 +64,7 @@
                        // print_r($pagina[0]);
                         if (
                         $pagina[0] == "productos" ||
+                        $pagina[0] == "editar_producto" ||
                         $pagina[0] == "inicio" ||
                         $pagina[0] == "agregar" ||
                         $pagina[0] == "categorias") 
@@ -86,16 +90,17 @@
     <!-- END wrapper -->
 
     <!-- Vendor -->
-    <script src="vistas/assets/libs/jquery/jquery.min.js"></script>
-    <script src="vistas/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vistas/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="vistas/assets/libs/node-waves/waves.min.js"></script>
-    <script src="vistas/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="vistas/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
-    <script src="vistas/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/libs/jquery/jquery.min.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/libs/node-waves/waves.min.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/libs/feather-icons/feather.min.js"></script>
 
     <!-- App js-->
-    <script src="vistas/assets/js/app.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/js/app.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/js/eliminar.js"></script>
 
 </body>
 

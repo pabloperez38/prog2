@@ -55,4 +55,44 @@ AGREGAR DATOS
             return "Error: " . $e->getMessage();
         }
     }
+    /*=============================================
+EDITAR DATOS
+=============================================*/
+    static public function mdlEditarProducto($tabla, $datos)
+    {
+        try {
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, precio = :precio, estado = :estado, id_categoria = :id_categoria WHERE id_producto = :id_producto");
+            // UN ENLACE POR CADA DATO, TENER EN CUENTA EL TIPO DE DATO STR O INT
+            $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+            $stmt->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
+            $stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_INT);
+            $stmt->bindParam(":id_categoria", $datos["categoria"], PDO::PARAM_INT);
+            $stmt->bindParam(":id_producto", $datos["id_producto"], PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "ok";
+            } else {
+                return "error";
+            }
+        } catch (Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
+
+    /*=============================================
+ELIMINAR DATO
+=============================================*/
+    static public function mdlEliminarProducto($tabla, $dato)
+    {
+        try {
+            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_producto = :id_producto");
+            $stmt->bindParam(":id_producto", $dato, PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "ok";
+            } else {
+                return "error";
+            }
+        } catch (Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
 }
