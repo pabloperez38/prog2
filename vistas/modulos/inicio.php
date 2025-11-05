@@ -1,6 +1,7 @@
 <div class="row">
    
-<?php $cantidad =  ControladorProductos::ctrContarProductos(); ?>
+<?php
+$cantidad =  ControladorProductos::ctrContarProductos(); ?>
 
     <div class="col-md-6 col-xl-3">
         <div class="card">
