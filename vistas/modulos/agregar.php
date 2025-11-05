@@ -16,7 +16,7 @@
                      <input type="text" id="nombre" name="nombre" class="form-control" required>
                  </div>
                  <div class="mb-3">
-                     <label for="categorias" class="form-label">Disabled</label>
+                     <label for="categorias" class="form-label">Categoría</label>
                      <select id="categoria" name="categoria" class="form-select">
                          <option selected="">Seleccione una categoría</option>
                          <?php foreach ($categorias as $categoria) { ?>
