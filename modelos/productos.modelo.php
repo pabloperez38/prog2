@@ -95,4 +95,18 @@ ELIMINAR DATO
             return "Error: " . $e->getMessage();
         }
     }
+
+    //Contar
+
+    static public function mdlContarProductos($tabla)
+    {
+
+        try {
+            $stmt = Conexion::conectar()->prepare("SELECT COUNT(*) AS total FROM $tabla");
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            "Error: " . $e->getMessage();
+        }
+    }
 }

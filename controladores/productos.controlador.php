@@ -94,4 +94,10 @@ ELIMINAR
             }
         }
     }
+    static public function ctrContarProductos()
+    {
+        $tabla = "productos";
+        $respuesta = ModeloProductos::mdlContarProductos($tabla);
+        return $respuesta;
+    }
 }
