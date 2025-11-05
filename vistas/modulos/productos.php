@@ -1,3 +1,9 @@
+  <?php
+ $productos = ControladorProductos::ctrMostrarProductos(null, null);
+
+
+ //echo "cantidad de productos: " . count($productos);
+  ?>
   <div class="col-xl-12">
       <div class="card">
           <div class="card-header">
@@ -7,6 +13,7 @@
 
   <input type="hidden" id="url" value="<?php echo $url ?>">
 
+  <?php if(count($productos) > 0){  ?>
           <div class="card-body">
               <div class="table-responsive">
                   <table class="table mb-0">
@@ -22,8 +29,7 @@
                       </thead>
                       <tbody>
 
-                          <?php
-                            $productos = ControladorProductos::ctrMostrarProductos(null, null);
+                          <?php                           
 
                             foreach ($productos as $producto) {
 
@@ -54,6 +60,13 @@
                   </table>
               </div>
           </div>
+          <?php } else {  ?>
+              <div class="card-body">
+                  <div class="alert alert-warning" role="alert">
+                      No hay productos registrados.
+                  </div>
+              </div>
+              <?php }  ?>
       </div>
   </div>
 

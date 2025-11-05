@@ -2,8 +2,8 @@
 ELIMINAR 
 =============================================*/
 $(document).on("click", ".btnEliminar", function () {
+ 
   let producto = $(this).attr("producto");
-
 
   Swal.fire({
     title: "¿Está seguro de eliminar el producto?",

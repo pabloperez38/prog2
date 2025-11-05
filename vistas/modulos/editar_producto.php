@@ -6,7 +6,7 @@
  <div class="col-xl-12">
      <div class="card">
          <div class="card-header">
-             <h5 class="card-title mb-0">Agregar</h5>
+             <h5 class="card-title mb-0">Editar</h5>
 
          </div><!-- end card header -->
 
@@ -21,7 +21,8 @@
                      <select id="categoria" name="categoria" class="form-select">
                          <?php foreach ($categorias as $categoria) { ?>
                              <option value="<?php echo $categoria["id_categoria"]; ?>"
-                                 <?php if ($categoria["id_categoria"] === $producto["id_categoria"]) { ?>
+                                 <?php
+                                 if ($categoria["id_categoria"] === $producto["id_categoria"]) { ?>
                                  selected
                                  <?php } ?>><?php echo $categoria["nombre"] ?>
                              </option>
@@ -50,7 +51,7 @@
                  <?php
                     $editar = new ControladorProductos();
                     $editar->ctrEditarProducto();
-                    ?>
+                ?>
 
                  <button class="btn btn-success" type="submit">Guardar</button>
              </form>

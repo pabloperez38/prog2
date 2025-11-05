@@ -7,10 +7,10 @@ $url = Plantilla::url(); ?>
 <head>
 
     <meta charset="utf-8" />
-    <title>Starter | Kadso - Responsive Admin Dashboard Template</title>
+    <title>Sistema de administración web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc." />
-    <meta name="author" content="Zoyothemes" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
@@ -24,84 +24,88 @@ $url = Plantilla::url(); ?>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-       <script src="<?php echo $url; ?>vistas/assets/js/scripts.js"></script>
+    <script src="<?php echo $url; ?>vistas/assets/js/scripts.js"></script>
 
 </head>
 
 <!-- body start -->
 
 <body data-menu-color="dark" data-sidebar="default">
+    <?php if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") { ?>
+        <!-- Begin page -->
+        <div id="app-layout">
 
-    <!-- Begin page -->
-    <div id="app-layout">
+            <?php include 'modulos/header.php'; ?>
+            <?php include 'modulos/menu.php'; ?>
 
-        <?php include 'modulos/header.php'; ?>
-        <?php include 'modulos/menu.php'; ?>
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
 
-        <!-- ============================================================== -->
-        <!-- Start Page Content here -->
-        <!-- ============================================================== -->
+            <div class="content-page">
+                <div class="content">
 
-        <div class="content-page">
-            <div class="content">
+                    <!-- Start Content-->
+                    <div class="container-xxl">
 
-                <!-- Start Content-->
-                <div class="container-xxl">
+                        <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
+                            <div class="flex-grow-1">
+                                <h4 class="fs-18 fw-semibold m-0">Sistema de administración web</h4>
+                            </div>
 
-                    <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
-                        <div class="flex-grow-1">
-                            <h4 class="fs-18 fw-semibold m-0">Sistema de administración web</h4>
                         </div>
-                       
-                    </div>
 
-                    <?php
-                    if (isset($_GET["pagina"])) {
+                        <?php
+                        if (isset($_GET["pagina"])) {
 
-                        $pagina = explode("/", $_GET["pagina"]);
-                       // print_r($pagina[0]);
-                        if (
-                        $pagina[0] == "productos" ||
-                        $pagina[0] == "editar_producto" ||
-                        $pagina[0] == "inicio" ||
-                        $pagina[0] == "agregar" ||
-                        $pagina[0] == "categorias") 
-                        {
-                            include "vistas/modulos/" . $pagina[0] . ".php";
+                            $pagina = explode("/", $_GET["pagina"]);
+                            //print_r($pagina);
+                            if (
+                                $pagina[0] == "productos" ||
+                                $pagina[0] == "editar_producto" ||
+                                $pagina[0] == "inicio" ||
+                                $pagina[0] == "agregar" ||
+                                $pagina[0] == "salir" ||
+                                $pagina[0] == "categorias"
+                            ) {
+                                include "vistas/modulos/" . $pagina[0] . ".php";
+                            } else {
+                                include "vistas/modulos/error404.php";
+                            }
                         } else {
-                            include "vistas/modulos/error404.php";
+                            include "vistas/modulos/inicio.php";
                         }
-                    } else {
-                        include "vistas/modulos/inicio.php";
-                    }
-                    ?>
+                        ?>
 
-                </div> <!-- container-fluid -->
+                    </div> <!-- container-fluid -->
 
-            </div> <!-- content -->
+                </div> <!-- content -->
 
-            <?php include 'modulos/footer.php'; ?>
+                <?php include 'modulos/footer.php'; ?>
+
+            </div>
 
         </div>
+        <!-- END wrapper -->
 
-    </div>
-    <!-- END wrapper -->
+        <!-- Vendor -->
+        <script src="<?php echo $url; ?>vistas/assets/libs/jquery/jquery.min.js"></script>
+        <script src="<?php echo $url; ?>vistas/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="<?php echo $url; ?>vistas/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="<?php echo $url; ?>vistas/assets/libs/node-waves/waves.min.js"></script>
+        <script src="<?php echo $url; ?>vistas/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="<?php echo $url; ?>vistas/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+        <script src="<?php echo $url; ?>vistas/assets/libs/feather-icons/feather.min.js"></script>
 
-    <!-- Vendor -->
-    <script src="<?php echo $url; ?>vistas/assets/libs/jquery/jquery.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/libs/node-waves/waves.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/libs/feather-icons/feather.min.js"></script>
-
-    <!-- App js-->
-    <script src="<?php echo $url; ?>vistas/assets/js/app.js"></script>
-    <script src="<?php echo $url; ?>vistas/assets/js/eliminar.js"></script>
-
+        <!-- App js-->
+        <script src="<?php echo $url; ?>vistas/assets/js/app.js"></script>
+        <script src="<?php echo $url; ?>vistas/assets/js/eliminar.js"></script>
+    <?php } else {
+        include "modulos/login.php";
+    } ?>
 </body>
+
 
 </html>
