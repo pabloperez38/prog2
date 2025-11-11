@@ -1,6 +1,7 @@
 <?php
 session_start();
-$url = Plantilla::url(); ?>
+$url = Plantilla::url();
+ini_set('log_errors', 1); ?>
 <!DOCTYPE html>
 <html lang="en">
 

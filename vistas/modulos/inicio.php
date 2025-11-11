@@ -12,7 +12,6 @@ $cantidad =  ControladorProductos::ctrContarProductos(); ?>
                         <h3 class="m-0 mb-3 fs-18"><?php echo $cantidad["total"] ?></h3>
                        
                     </div>
-
                     
                 </div>
             </div>

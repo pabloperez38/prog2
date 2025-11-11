@@ -15,21 +15,38 @@ class ControladorProductos
     public function ctrAgregarProducto()
     {
         if (isset($_POST["estado"])) {
-            $tabla = "productos"; //nombre de la tabla
+
+            //Imagen
+
+            if (isset($_FILES['foto']["tmp_name"]) && !empty($_FILES['foto']["tmp_name"])) {
+
+                list($ancho, $alto) = getimagesize($_FILES["foto"]["tmp_name"]);
+
+                $image = $_FILES['foto'];
+                $folder = "productos/";
+                $name = Plantilla::generar_url($_POST["nombre"]);
+                $width = $ancho;
+                $height = $alto;
+
+                $imagen = Plantilla::guardarImagen($image, $folder, $width, $height, $name);
+             
+            } 
+                $tabla = "productos"; //nombre de la tabla
             $datos = array(
                 "nombre" => $_POST["nombre"],
                 "categoria" => $_POST["categoria"],
                 "precio" => $_POST["precio"],
-                "estado" => $_POST["estado"]
+                "estado" => $_POST["estado"],
+                "imagen" => $imagen
             );
 
             //print_r($datos);
-            // return;
+            //return;
             //podemos volver a la página de datos
 
             $url = Plantilla::url() . "productos";
 
-            $respuesta = ModeloProductos::mdlAgregarProducto("productos", $datos);
+            $respuesta = ModeloProductos::mdlAgregarProducto($tabla, $datos);
 
             if ($respuesta == "ok") {
                 echo '<script>

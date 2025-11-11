@@ -40,12 +40,15 @@ AGREGAR DATOS
     static public function mdlAgregarProducto($tabla, $datos)
     {
         try {
-            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, precio, estado, id_categoria) VALUES (:nombre, :precio, :estado, :id_categoria)");
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, precio, estado, id_categoria, imagen) VALUES (:nombre, :precio, :estado, :id_categoria, :imagen)");
             // UN ENLACE POR CADA DATO, TENER EN CUENTA EL TIPO DE DATO STR O INT
             $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
             $stmt->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
             $stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_INT);
             $stmt->bindParam(":id_categoria", $datos["categoria"], PDO::PARAM_INT);
+            $stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
+
+   
             if ($stmt->execute()) {
                 return "ok";
             } else {
